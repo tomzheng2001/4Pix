@@ -1,0 +1,106 @@
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto;
+    overflow: hidden;
+
+    &__content {
+        width: 100%;
+        grid-column: 3 / -1;
+        overflow: auto;
+        height: 93vh;
+    }
+
+    &__topnav {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        grid-column: 1 / -1;
+        gap: 5rem;
+        padding: 0 2rem;
+        background: $main-color;
+        height: 7vh;
+
+        img {
+            width: 10rem;
+        }
+
+        input {
+            font-size: 1.5rem;
+            font-family: "Raleway";
+            padding: 1rem 2rem;
+            border-radius: 3rem;
+            border: 0;
+            width: 100%;
+        }
+
+        h3 {
+            font-size: 2.5rem;
+            font-family: "Raleway";
+            font-weight: 700;
+        }
+    }
+
+    &__sidebar {
+        grid-column: 1 / 3;
+
+        // position: absolute;
+        display: flex;
+        flex-direction: column;
+        height: 93vh;
+        gap: 1.5rem;
+
+        background-image: linear-gradient(
+            235deg,
+            $main-color 40%,
+            $tertiary-color 75%
+        );
+
+        a {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: transparent;
+            color: #000;
+            width: 100%;
+            font-size: 2.25rem;
+            font-family: "Raleway";
+            text-decoration: none;
+            padding: 1.5rem 2rem;
+            position: relative;
+            overflow: hidden;
+            z-index: 0;
+            transition: fill 0.5s ease-in, color 0.35s ease-in;
+
+            &:first-child {
+                margin-top: 1.5rem;
+            }
+
+            &:hover > svg {
+                fill: white;
+            }
+
+            &:hover {
+                color: #fff;
+            }
+
+            &:hover:before {
+                transform: translateX(0%);
+            }
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                background-color: rgba($tertiary-color, 0.9);
+                width: 100%;
+                height: 100%;
+                transform: translateX(-100%);
+                transition: all 0.4s ease-in;
+                z-index: -1;
+            }
+        }
+    }
+}

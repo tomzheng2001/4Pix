@@ -1,0 +1,96 @@
+.window {
+    padding: 4rem;
+}
+
+.bg {
+    background-image: linear-gradient(
+            103deg,
+            rgba($main-color, 0.7),
+            rgba($tertiary-color, 0.7)
+        ),
+        url("../../images/hero2.jpg");
+    height: 90vh;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+}
+
+.login {
+    grid-column: 5 / 9;
+    background-color: #eee;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    align-items: center;
+    padding: 3rem;
+    border-radius: 1rem;
+
+    &__heading {
+        font-family: "Raleway";
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 3rem;
+    }
+
+    &__button {
+        padding: 1rem 2rem;
+        border-radius: 2rem;
+        width: 80%;
+        background-image: linear-gradient(
+                to right bottom,
+                $main-color,
+                $tertiary-color
+            ),
+            url("../../images/hero2.jpg");
+        font-family: "Raleway";
+        color: #eee;
+        font-weight: 700;
+        margin-bottom: 2rem;
+        border: 0;
+        cursor: pointer;
+
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 1rem 2rem rgba(#000, 0.2);
+        }
+
+        &:focus:active {
+            outline: none;
+            transform: translateY(-1px);
+            box-shadow: 0 0.5rem 1rem rgba(#000, 0.2);
+        }
+    }
+
+    &__inputs {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        gap: 3rem;
+        font-family: "Raleway";
+        margin-bottom: 4rem;
+
+        input {
+            align-self: center;
+            width: 100%;
+            height: 5rem;
+            border: 0;
+            background-color: transparent;
+            border-bottom: 4px solid black;
+            padding: 2.5rem 1.5rem;
+            font-size: 2rem;
+            &:focus {
+                outline: none;
+            }
+
+            &::placeholder {
+                font-family: "Raleway";
+                font-size: 1.5rem;
+                opacity: 0.4;
+            }
+        }
+    }
+
+    p {
+        font-family: "Raleway";
+        font-size: 1rem;
+    }
+}

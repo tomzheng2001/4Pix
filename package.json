@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "npm-link-shared": "^0.5.6",
+    "react-router-dom": "^5.2.0"
+  }
+}

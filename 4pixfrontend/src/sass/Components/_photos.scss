@@ -1,0 +1,102 @@
+.photos {
+    display: flex;
+    flex-direction: column;
+    font-size: 2.75rem;
+    padding: 2.5rem;
+
+    &__header {
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+
+        &-button {
+            text-decoration: none;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            font-family: "Raleway";
+            font-size: 2.5rem;
+            font-weight: 700;
+            border-bottom: 2px solid;
+            padding: 0 1rem;
+            transition: all 0.3s ease;
+
+            &:hover {
+                background-color: $main-color;
+            }
+        }
+    }
+
+    button {
+        padding: 1.5rem 3rem;
+        border-radius: 2.5rem;
+        border: 3px solid $main-color;
+        background-color: transparent;
+        box-shadow: 0 1rem 2rem rgba(#000, 0.2);
+        font-family: "Raleway";
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: $main-color;
+        transition: all 0.1s;
+        white-space: nowrap;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $main-color;
+            color: #000;
+            transform: translateY(-2px);
+        }
+
+        &:focus:active {
+            outline: none;
+            transform: translateY(-1px);
+            box-shadow: 0 0.5rem 1rem rgba(#000, 0.2);
+        }
+    }
+
+    &__heading {
+        font-family: "Raleway";
+        align-self: center;
+        margin: auto;
+        padding-right: 7vh;
+    }
+
+    &__display {
+        padding: 3rem;
+        display: grid;
+        gap: 3rem;
+        grid-template-columns: repeat(12, 1fr);
+        grid-template-rows: 15vh;
+        grid-auto-rows: 15vh;
+        text-align: center;
+
+        &-none {
+            font-family: "Raleway";
+            grid-column: 1 / -1;
+            font-weight: 300;
+            font-size: 3rem;
+        }
+    }
+
+    &__imagebox {
+        grid-column-start: span 3;
+        border: 5px solid $main-color;
+        transition: all 0.2s ease;
+
+        &:hover {
+            border: 10px solid #000;
+        }
+    }
+
+    &__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        padding: 1rem;
+        transition: all 0.2s ease;
+
+        &:hover {
+            padding: 0rem;
+        }
+    }
+}

@@ -1,0 +1,132 @@
+.landing {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    padding: 4rem;
+}
+
+.hero {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    background-image: linear-gradient(
+            103deg,
+            rgba(84, 186, 233, 0.7) 47%,
+            rgba($tertiary-color, 0.7) 53%
+        ),
+        url("../../images/hero1.jpg");
+    background-size: cover;
+    height: 90vh;
+    grid-column: 1 / 13;
+    justify-content: center;
+    overflow: hidden;
+    // position: relative;
+    // clip-path: polygon(0 0, 65% 0, 35% 100%, 0% 100%);
+
+    &__buttons {
+        display: flex;
+        gap: 3rem;
+
+        button {
+            padding: 1.25rem 1.75rem;
+            border-radius: 2rem;
+            border: 3px solid black;
+            cursor: pointer;
+            font-size: 1.75rem;
+        }
+    }
+
+    &__input {
+        width: 80%;
+        height: 5rem;
+        border: 3px solid black;
+        border-radius: 1rem;
+        padding: 2.5rem;
+        font-size: 2rem;
+        &:focus {
+            outline: none;
+        }
+    }
+
+    &__headers {
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        gap: 3rem;
+        margin-top: -15rem;
+        padding: 4rem;
+        justify-content: flex-start;
+        grid-column: 1 / 7;
+        font-family: "Raleway";
+
+        h1 {
+            font-size: 5rem;
+            font-weight: 700;
+        }
+
+        h4 {
+            font-size: 2rem;
+            font-weight: 300;
+        }
+
+        &-btn {
+            margin-top: 4rem;
+            width: 35rem;
+            font-size: 2rem;
+            font-weight: 600;
+            font-family: "Raleway";
+            padding: 1.5rem 3.5rem;
+            background-color: transparent;
+            border: 4px solid #000;
+            position: relative;
+            z-index: 0;
+            overflow: hidden;
+            display: flex;
+            cursor: pointer;
+            justify-content: center;
+
+            &:before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                background-color: rgba($tertiary-color, 0.7);
+                width: 100%;
+                height: 100%;
+                transform: translateX(-100%);
+                transition: all 0.7s ease-in;
+                z-index: -1;
+            }
+
+            &:after {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                background-color: rgba(84, 186, 233, 0.7);
+                width: 100%;
+                height: 100%;
+                transform: translateX(-100%);
+                transition: all 0.25s ease-out 0.25s;
+                z-index: -1;
+            }
+            &:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 1rem 2rem rgba(#000, 0.2);
+            }
+
+            &:active,
+            &:focus {
+                outline: none;
+                transform: translateY(-1px);
+                box-shadow: 0 0.5rem 1rem rgba(#000, 0.2);
+            }
+
+            &:hover:before {
+                transform: translateX(100%);
+            }
+
+            &:hover:after {
+                transform: translateX(0);
+            }
+        }
+    }
+}
