@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Dashboard from "./Dashboard";
 import { listPhotosByAlbum } from "../auth/photo";
-import { Redirect } from "react-router";
-import { Link } from "react-router-dom";
-// import Dashboard from "./Dashboard";
-import Modal from "./Modal";
 
 const Photos = (props) => {
     const [photos, setPhotos] = useState([]);
@@ -13,7 +9,7 @@ const Photos = (props) => {
 
     useEffect(() => {
         loadPhotos();
-    }, []);
+    });
 
     const loadPhotos = () => {
         listPhotosByAlbum(props.match.params.albumId).then((data) => {
@@ -44,7 +40,7 @@ const Photos = (props) => {
                             <img
                                 className="photos__image"
                                 src={`/uploads/${photo}`}
-                                alt="image"
+                                alt=""
                             />
                         </div>
                     ))}

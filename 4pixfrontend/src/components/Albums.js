@@ -14,6 +14,7 @@ const Albums = (props) => {
     const [categories, setCategories] = useState([]);
     const [showSuccess, setShowSuccess] = useState(false);
     const [albums, setAlbums] = useState([]);
+    const [email, setEmail] = useState();
     const [albumInfo, setAlbumInfo] = useState({
         name: "",
         category: "",
@@ -53,9 +54,11 @@ const Albums = (props) => {
     const userId = props.location.state.userId;
     const page = props.location.state.page;
     const token = isAuthenticated().token;
+    
 
     useEffect(() => {
         loadCategories();
+        setEmail(window.em);
         const close = (e) => {
             if (e.key === "Escape") {
                 setShowAlbumModal(false);
@@ -367,6 +370,7 @@ const Albums = (props) => {
         <Dashboard
             user={user}
             userId={userId}
+            email={email}
             page={page}
             content={displayAlbumContent()}
         />

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import Dashboard from "./Dashboard";
 import { isAuthenticated } from "../auth";
 import { createCategory } from "../auth/category";
+import { listCategories } from "../auth/category";
+import { removeCategory } from "../auth/category";
 import Modal from "./Modal";
 
 const Categories = (props) => {
@@ -11,6 +13,7 @@ const Categories = (props) => {
     const token = isAuthenticated().token;
 
     const [showCategoryModal, setShowCategoryModal] = useState(false);
+    const [categories, setCategories] = useState([]);
     const [categoryInfo, setCategoryInfo] = useState({
         name: "",
         error: "",
@@ -18,6 +21,7 @@ const Categories = (props) => {
     });
 
     useEffect(() => {
+        loadCategories();
         const close = (e) => {
             if (e.key === "Escape") {
                 setShowCategoryModal(false);
@@ -25,7 +29,15 @@ const Categories = (props) => {
             }
         };
         window.addEventListener("keydown", close);
-    }, []);
+    }, [categories]);
+
+    const loadCategories = () => {
+        listCategories(userId).then((data) => {
+            if (!data.err) {
+                setCategories(data);
+            }
+        });
+    };
 
     const handleChange = (name) => (event) => {
         const value = event.target.value;
@@ -41,6 +53,17 @@ const Categories = (props) => {
         setShowCategoryModal(false);
     };
 
+    const onClickDelete = (cid) => {
+        
+        removeCategory(cid, userId, token).then((data) => {
+            if (data.error) {
+                console.log(data.error)
+            } else {
+                loadCategories()
+            }
+        })
+    }
+
     const clickConfirm = (e) => {
         e.preventDefault();
         var formData = new FormData();
@@ -55,9 +78,7 @@ const Categories = (props) => {
                     error: "",
                     loading: false,
                 });
-                setShowCategoryModal(false);
-                // setShowSuccess(true);
-                // setTimeout(() => setShowSuccess(false), 1500);
+                // setShowCategoryModal(false);
             }
         });
     };
@@ -95,7 +116,7 @@ const Categories = (props) => {
 
     const displayCategoriesContent = () => {
         return (
-            <div>
+            <div className="category">
                 <Modal
                     title={categoryTitle}
                     content={categoryContent}
@@ -107,6 +128,24 @@ const Categories = (props) => {
                 <button onClick={() => setShowCategoryModal(true)}>
                     Create New Category
                 </button>
+                <ul className="category__list">
+                    {categories.map((category, i) => (
+                        <li>
+                            <div key={i} className="category__row">
+                                <h1>▽</h1>
+                                <h1>{category.name}</h1>
+                                <h2>3 Albums</h2>
+                                <button onClick={() => onClickDelete(category.category_id)} className="category__row-delete">Delete Category</button>
+                            </div>
+                        </li>
+                    ))}
+                </ul>
+                
+                {/* {albums.map((album, i) => (
+                        <option key={i} value={album.album_id}>
+                            {album.name}
+                        </option>
+                    ))} */}
             </div>
         );
     };
@@ -115,6 +154,7 @@ const Categories = (props) => {
         <Dashboard
             user={user}
             userId={userId}
+            email={props.location.state.email}
             page={page}
             content={displayCategoriesContent()}
         />

@@ -9,6 +9,7 @@ const Dashboard = (props) => {
     const user = props.user;
     const userId = props.userId;
     const page = props.page;
+    const email = props.email;
 
     // const redirectToAlbums = () => {
     //     return (
@@ -26,6 +27,7 @@ const Dashboard = (props) => {
                 pathname: "/profile",
                 state: { user: user,
                         userId: userId,
+                        email: email,
                         page: "profile"
                      }
             }}
@@ -52,6 +54,7 @@ const Dashboard = (props) => {
                 pathname: "/albums",
                 state: { user: user,
                         userId: userId,
+                        email: email,
                         page: "album" }
             }}  
                 style={{ background: '#815ff9' }}
@@ -76,6 +79,7 @@ const Dashboard = (props) => {
                 pathname: "/categories",
                 state: { user: user,
                         userId: userId,
+                        email: email,
                         page: "categories" }
                 }}
                 style={{ background: '#815ff9' }}
@@ -102,6 +106,7 @@ const Dashboard = (props) => {
                         pathname: "/details",
                         state: { user: user,
                                 userId: userId,
+                                email: window.em,
                                 page: "details" }
                     }}
                     style={{ background: '#815ff9' }}
@@ -127,6 +132,7 @@ const Dashboard = (props) => {
                         pathname: "/trash",
                         state: { user: user,
                                 userId: userId,
+                                email: window.em,
                                 page: "trash" }
                     }}
                     style={{ background: '#815ff9' }}
@@ -155,11 +161,12 @@ const Dashboard = (props) => {
             </nav>
 
             <nav className="dashboard__sidebar">
-                {page == 'profile' ? onProfile() :
+                {page === 'profile' ? onProfile() :
                 <Link to={{
                     pathname: "/profile",
                     state: { user: user,
                             userId: userId,
+                            email: email,
                             page: "profile" }
                 }}
                     href="#">
@@ -175,11 +182,12 @@ const Dashboard = (props) => {
                     </svg>
                     Profile
                 </Link> }
-                {page == 'album' ? onAlbum() :
+                {page === 'album' ? onAlbum() :
                 <Link to={{
                     pathname: "/albums",
                     state: { user: user,
                             userId: userId,
+                            email: email,
                             page: "album" }
                 }} href="/albums">
                     <svg
@@ -194,11 +202,12 @@ const Dashboard = (props) => {
                     </svg>
                     Albums
                 </Link> }
-                {page == 'categories' ? onCategories() :
+                {page === 'categories' ? onCategories() :
                 <Link to={{
                     pathname: "/categories",
                     state: { user: user,
                             userId: userId,
+                            email: email,
                             page: "categories" }
                     }}
                     href="#">
@@ -214,12 +223,13 @@ const Dashboard = (props) => {
                     </svg>
                     Categories
                 </Link> }
-                {page == 'details' ? onDetails() :
+                {page === 'details' ? onDetails() :
                 <Link 
                     to={{
                         pathname: "/details",
                         state: { user: user,
                                 userId: userId,
+                                email: email,
                                 page: "details" }
                     }}
                     href="#">
@@ -234,12 +244,13 @@ const Dashboard = (props) => {
                     </svg>
                     Details
                 </Link> }
-                {page == 'trash' ? onTrash() :
+                {page === 'trash' ? onTrash() :
                 <Link 
                     to={{
                         pathname: "/trash",
                         state: { user: user,
                                 userId: userId,
+                                email: email,
                                 page: "trash" }
                     }}
                     href="#">

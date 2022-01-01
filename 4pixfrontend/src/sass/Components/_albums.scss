@@ -70,19 +70,13 @@
 
                 &-image {
                     width: 100%;
-                    height: 100%;
+                    height: 85%;
                     object-fit: cover;
                     border-top-left-radius: 2.6rem;
                     border-top-right-radius: 2.6rem;
                     padding-bottom: 1rem;
                 }
             }
-
-            // &__back {
-            //     border-radius: 3rem;
-            //     background-color: red;
-            //     transform: rotateY(180deg);
-            // }
 
             &:hover {
                 transform: translateY(-4px);

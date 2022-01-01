@@ -29,3 +29,17 @@ export const createCategory = (category, userId, token) => {
             console.log(err);
         });
 };
+
+export const removeCategory = (categoryId, userId, token) => {
+    return fetch(`${API}/category/${categoryId}/${userId}`, {
+        method: "DELETE",
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    }).then((response) => {
+        console.log(response);
+        return response.json();
+    }).catch((err) => {
+        console.log(err);
+    })
+}

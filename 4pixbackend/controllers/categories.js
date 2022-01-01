@@ -47,12 +47,12 @@ exports.createCategory = (req, res) => {
 };
 
 exports.removeCategory = (req, res) => {
-    const category = req.category;
     mysqlConnection.query(
         `DELETE FROM categories WHERE 
-                            name = ? && user_id = ?`,
-        [category.name, req.params.user_id],
+                            category_id = ? && user_id = ?`,
+        [req.params.categoryId, req.params.userId],
         (err, results) => {
+            console.log(results);
             if (err) {
                 return res.status(400).json({
                     error: "Failed to delete category",

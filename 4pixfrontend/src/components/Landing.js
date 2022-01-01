@@ -124,7 +124,7 @@ const Landing = () => {
                 <div className="navigation">
                     <a
                         onClick={() => setRegisterIsOpen(true)}
-                        href="#"
+                        href="#foo"
                         className="navigation__register"
                     >
                         Register
@@ -140,7 +140,7 @@ const Landing = () => {
                         and categorize them to help you get customers to shop
                         with you.
                     </h4>
-                    <a className="hero__headers-btn">Get Started</a>
+                    <a className="hero__headers-btn" href="#foo">Get Started</a>
                 </div>
             </div>
 

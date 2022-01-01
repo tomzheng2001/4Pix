@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { createPortal } from "react-dom";
 
 import "../sass/main.scss";
@@ -22,12 +22,6 @@ const Modal = (props) => {
           )
         : null;
 
-    // <div>
-    //     <div className="input-group">
-    //         <input type="text" className="username" />
-    //         <input type="email" className="email" />
-    //     </div>
-    // </div>
 };
 
 export default Modal;

@@ -1,0 +1,23 @@
+.category {
+    display: flex;
+    flex-direction: column;
+    padding: 3rem;
+    gap: 2rem;
+    font-family: "Helvetica";
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        list-style-type: none;
+    }
+
+    &__row {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 1.5rem;
+        background-color: $main-color;
+        border-radius: 2rem;
+    }
+}

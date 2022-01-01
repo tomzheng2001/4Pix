@@ -7,6 +7,7 @@ const Signin = () => {
     const [loginValues, setLoginValues] = useState({
         username: "",
         password: "",
+        email: "",
         redirectToReferrer: false,
         error: false,
         loading: false,
@@ -15,6 +16,8 @@ const Signin = () => {
     const [userId, setUserId] = useState();
 
     const [data, setData] = useState();
+
+    const [email, setEmail] = useState();
 
     const handleLoginChange = (name) => (event) => {
         setLoginValues({
@@ -40,10 +43,13 @@ const Signin = () => {
                 authenticate(data, () => {
                     setUserId(data.user.id);
                     setData(loginValues.username);
+                    console.log(data.user.email);
+                    setEmail(data.user.email)
                     setLoginValues({
                         ...loginValues,
                         username: "",
                         password: "",
+                        email: "",
                         redirectToReferrer: true,
                         success: true,
                     });
@@ -61,6 +67,7 @@ const Signin = () => {
                         state: {
                             user: data,
                             userId: userId,
+                            email: email,
                             page: "profile"
                         },
                     }}

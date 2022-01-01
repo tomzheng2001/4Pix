@@ -20,21 +20,23 @@ mysqlConnection.connect((err) => {
 });
 
 mysqlConnection.query(
-    `CREATE TABLE users (
+    `
+    USE 4Pix;
+    CREATE TABLE IF NOT EXISTS users (
         id int auto_increment,
         username varchar(50),
         email varchar(100),
         hash_password char(60),
         PRIMARY KEY (id)
     );
-    CREATE TABLE categories (
+    CREATE TABLE IF NOT EXISTS categories (
         category_id int auto_increment,
         name varchar(50),
         user_id int,
         PRIMARY KEY (category_id),
         FOREIGN KEY (user_id) REFERENCES users(id)
     );
-    CREATE TABLE albums (
+    CREATE TABLE IF NOT EXISTS albums (
         album_id int auto_increment,
         name varchar(100),
         description text,
@@ -43,7 +45,7 @@ mysqlConnection.query(
         PRIMARY KEY (album_id),
         FOREIGN KEY (category_id) REFERENCES categories(category_id)
     );
-    CREATE TABLE photos (
+    CREATE TABLE IF NOT EXISTS photos (
         photo_id int auto_increment,
         photo varchar(100),
         album_id int,

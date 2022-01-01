@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Switch, Route, useHistory } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Dashboard from "./components/Dashboard";
 import Landing from "./components/Landing";
 import Signin from "./components/Signin";
